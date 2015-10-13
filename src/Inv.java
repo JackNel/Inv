@@ -8,12 +8,12 @@ public class Inv {
     static void listItems(ArrayList<Item> items) {  //Create a static method called "listItems" that uses the ArrayList titled "items" defined below.
         int objectNum = 1;
         for (Item object : items) {
-            System.out.println(String.format("%d. %s x%d", objectNum, object.text, object.qty));
+            System.out.println(String.format("%d. %s %s x%d ", objectNum, object.category, object.text, object.qty));
             objectNum++;
         }//For loop
     }//listItems method
 
-    public static void main(String[] args) {  //Begin Main Method
+    public static void main(String[] args) throws Exception {  //Begin Main Method
         Scanner scanner = new Scanner(System.in);
         ArrayList<Item> items = new ArrayList();  //My ArrayList called "items" contains objects of the class "Item"
 
@@ -30,8 +30,10 @@ public class Inv {
             if (choiceNum == 1) {
                 System.out.println("Enter the name of the item you would like to create.");
                 String pickUp = scanner.nextLine();
-                Item addItem = new Item(pickUp, 1);
-                items.add(addItem);
+                System.out.println(String.format("What type of item is %s?", pickUp));
+                String type = scanner.nextLine();
+                Item itemCat = createItem(pickUp, 1, type);
+                items.add(itemCat);
 
             } else if (choiceNum == 2) {
                 System.out.println("Enter the number of the item you would like to get rid of.");
@@ -62,4 +64,25 @@ public class Inv {
             }
         }//while loop
     }//Main Method
+
+    static Item createItem(String text, int qty, String category) throws Exception {
+        if (category.equals("headwear")) {
+            return new Headwear(text, 1);
+        }
+        else if (category.equals("footwear")) {
+            return new Footwear(text, 1);
+        }
+        else if (category.equals("armor")) {
+            return new Armor(text, 1);
+        }
+        else if (category.equals("weapon")) {
+            return new Weapon(text, 1);
+        }
+        else if (category.equals("misc")) {
+            return new Misc(text, 1);
+        }
+        else {
+            throw new Exception("That category does not exist.");
+        }
+    }//static method createItem
 }//Inv class
