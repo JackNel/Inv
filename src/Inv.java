@@ -6,10 +6,10 @@ import java.util.Scanner;
  */
 public class Inv {
     static void listItems(ArrayList<Item> items) {  //Create a static method called "listItems" that uses the ArrayList titled "items" defined below.
-        int itemNum = 1;
+        int objectNum = 1;
         for (Item object : items) {
-            System.out.println(itemNum + ". " + object.text + " x" + object.qty);
-            itemNum++;
+            System.out.println(objectNum + ". " + object.text + " x" + object.qty);
+            objectNum++;
         }//For loop
     }//listItems method
 
@@ -29,33 +29,34 @@ public class Inv {
 
             if (choiceNum == 1) {
                 System.out.println("Enter the name of the item you would like to create.");
-                String object = scanner.nextLine();
-                Item name = new Item(object);
-                items.add(name);
+                String pickUp = scanner.nextLine();
+                Item addItem = new Item(pickUp, 1);
+                items.add(addItem);
 
             } else if (choiceNum == 2) {
                 System.out.println("Enter the number of the item you would like to get rid of.");
                 String loseIt = scanner.nextLine();
                 try {
                     int loseItNum = Integer.valueOf(loseIt);
-                    Item name = items.remove(loseItNum - 1);
-                    System.out.println("You have dropped the " + name.text);
+                    Item lost = items.remove(loseItNum - 1);
+                    System.out.println("You have dropped the " + lost.text);
                 } catch (Exception e) {
                     System.out.println("That item does not exist!");
                 }
 
             } else if (choiceNum == 3) {
                 System.out.println("Enter the number of the item you would like to change the quantity of.");
-                String change = scanner.nextLine();
-                int changeNum = Integer.valueOf(change);
-                Item newQty = items.get(changeNum - 1);
-                if (items.contains(newQty)) {
-                    System.out.println("Enter the updated quantity for the item: " + newQty.text + " x" + newQty.qty);
+                String itemName = scanner.nextLine();
+                int itemNameNum = Integer.valueOf(itemName);
+                Item toBeChanged = items.get(itemNameNum - 1);
+                if (items.contains(toBeChanged)) {
+                    System.out.println("Enter the updated quantity for the item: " + toBeChanged.text + " x" + toBeChanged.qty);
                     String updated = scanner.nextLine();
                     int updatedNum = Integer.valueOf(updated);
 
+                    //Updated Quantity goes here
 
-                } else if (!items.contains(newQty)) {
+                } else if (!items.contains(toBeChanged)) {
                     System.out.println("That item does not exist!");
                     continue;
                 }
