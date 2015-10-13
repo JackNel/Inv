@@ -8,7 +8,7 @@ public class Inv {
     static void listItems(ArrayList<Item> items) {  //Create a static method called "listItems" that uses the ArrayList titled "items" defined below.
         int objectNum = 1;
         for (Item object : items) {
-            System.out.println(objectNum + ". " + object.text + " x" + object.qty);
+            System.out.println(String.format("%d. %s x%d", objectNum, object.text, object.qty));
             objectNum++;
         }//For loop
     }//listItems method
@@ -51,7 +51,7 @@ public class Inv {
                 try {
                     Item toBeChanged = items.get(itemNameNum - 1);
                     if (items.contains(toBeChanged)) {
-                        System.out.println("Enter the updated quantity for the item: " + toBeChanged.text + " x" + toBeChanged.qty);
+                        System.out.println(String.format("Enter the updated quantity for the item: %s x%d", toBeChanged.text, toBeChanged.qty));
                         String updated = scanner.nextLine();
                         int updatedQty = Integer.valueOf(updated);
                         toBeChanged.qty = updatedQty;
