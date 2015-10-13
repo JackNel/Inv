@@ -52,13 +52,11 @@ public class Inv {
                 if (items.contains(toBeChanged)) {
                     System.out.println("Enter the updated quantity for the item: " + toBeChanged.text + " x" + toBeChanged.qty);
                     String updated = scanner.nextLine();
-                    int updatedNum = Integer.valueOf(updated);
-
-                    //Updated Quantity goes here
+                    int updatedQty = Integer.valueOf(updated);
+                    toBeChanged.qty = updatedQty;
 
                 } else if (!items.contains(toBeChanged)) {
                     System.out.println("That item does not exist!");
-                    continue;
                 }
 
             }
