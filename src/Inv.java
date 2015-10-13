@@ -48,17 +48,17 @@ public class Inv {
                 System.out.println("Enter the number of the item you would like to change the quantity of.");
                 String itemName = scanner.nextLine();
                 int itemNameNum = Integer.valueOf(itemName);
-                Item toBeChanged = items.get(itemNameNum - 1);
-                if (items.contains(toBeChanged)) {
-                    System.out.println("Enter the updated quantity for the item: " + toBeChanged.text + " x" + toBeChanged.qty);
-                    String updated = scanner.nextLine();
-                    int updatedQty = Integer.valueOf(updated);
-                    toBeChanged.qty = updatedQty;
-
-                } else if (!items.contains(toBeChanged)) {
-                    System.out.println("That item does not exist!");
+                try {
+                    Item toBeChanged = items.get(itemNameNum - 1);
+                    if (items.contains(toBeChanged)) {
+                        System.out.println("Enter the updated quantity for the item: " + toBeChanged.text + " x" + toBeChanged.qty);
+                        String updated = scanner.nextLine();
+                        int updatedQty = Integer.valueOf(updated);
+                        toBeChanged.qty = updatedQty;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Not a valid option");
                 }
-
             }
         }//while loop
     }//Main Method
