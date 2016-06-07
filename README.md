@@ -33,7 +33,7 @@ Options:
 2. Methods:
     * **Create** new item by entering name
     * **Remove** item by entering it's number
-    * **Change quantity
+    * **Change** quantity
 3. Create an array called items that hold objects of the Item class
     * **Item**
         * name (string)
